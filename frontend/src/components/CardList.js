@@ -1,11 +1,10 @@
 import React from 'react';
 import RestaurantCard from './RestaurantCard'
-import { Module } from 'module';
 
 let CardList = (props) => {
     return <div className="grid-container">
         <div className="card-grid">
-            {sortRestaurants(props.restaurants, props.sorting)
+            {sortRestaurants(props.restaurants, props.sorting, props.search)
                 .map((restaurant, index) => {
                     return <RestaurantCard restaurant={restaurant} key={index} {...props} />
                 })}
@@ -13,20 +12,30 @@ let CardList = (props) => {
     </div>
 }
 
-export let sortRestaurants = (restaurants, sortingType) => {
-    return restaurants.sort((a,b) => {
+export let sortRestaurants = (restaurants, sortingType, searchString) => {
+    return searchFilter(restaurants, searchString).sort((a, b) => {
         let afav = a.fav ? 0 : 1;
         let bfav = b.fav ? 0 : 1;
 
-        let astatus = a.status === "closed" ? 2 : 
-                   a.status === "open" ? 0 : 1;
+        let astatus = a.status === "closed" ? 2 :
+            a.status === "open" ? 0 : 1;
 
-        let bstatus = b.status === "closed" ? 2 : 
-                   b.status === "open" ? 0 : 1;   
+        let bstatus = b.status === "closed" ? 2 :
+            b.status === "open" ? 0 : 1;
 
         // Sort priority: Favorite > Opening status > value sorting
-        return afav - bfav || astatus - bstatus || valueSorting(a,b,sortingType)
+        return afav - bfav || astatus - bstatus || valueSorting(a, b, sortingType)
     })
+}
+
+export let searchFilter = (restaurants, searchString) => {
+    if (searchString && searchString !== "") {
+        return restaurants.filter((restaurant, index) => {
+            return restaurant.name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1
+        })
+    } else {
+        return restaurants
+    }
 }
 
 let valueSorting = (x, y, sorting) => {

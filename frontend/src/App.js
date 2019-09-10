@@ -35,7 +35,7 @@ class App extends Component {
   handleFavorite(restaurant) {
     let index = this.state.restaurants.indexOf(restaurant)
     this.setState(prevState => ({
-      restaurants: update(prevState.restaurants, {[index]: {fav: {$set: !restaurant.fav}}})
+      restaurants: update(prevState.restaurants, { [index]: { fav: { $set: !restaurant.fav } } })
     }))
     this.favorites[restaurant.name] = !restaurant.fav
     console.log(this.favorites)
@@ -63,11 +63,7 @@ class App extends Component {
   render() {
     return <div>
       <SearchBar changeSorting={this.handleSortChange} changeSearch={this.handleSearchChange}></SearchBar>
-      { this.state.search === "" ? 
-      <CardList loading={this.state.loading} favorite={this.handleFavorite} sorting={this.state.sortingBy} restaurants={this.state.restaurants}></CardList>
-      :
-      <p>Hello</p>
-      }
+      <CardList loading={this.state.loading} favorite={this.handleFavorite} sorting={this.state.sortingBy} restaurants={this.state.restaurants} search={this.state.search}></CardList>
     </div>
   }
 }
