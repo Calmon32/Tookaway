@@ -8,9 +8,9 @@ function RestaurantCard(props) {
             <Card.ImgOverlay>
                 <button onClick={() => {props.favorite(props.restaurant)}} className="fav-btn">
                     {props.restaurant.fav ?
-                        <img className="fav-btn" src="/heart-full.png"></img>
+                        <img className="fav-btn" src="/heart-full.png" alt="favorite"></img>
                     :
-                        <img className="fav-btn" src="/heart-empty.png"></img>
+                        <img className="fav-btn" src="/heart-empty.png" alt="not favorite"></img>
                     }
                 </button>
             </Card.ImgOverlay>
@@ -18,6 +18,7 @@ function RestaurantCard(props) {
                 <Card.Title>{props.restaurant.name}</Card.Title>
                 <Card.Text style={{ fontSize: '12px' }}>
                     Status: {props.restaurant.status}<br/>
+                    TopRestaurants: {props.restaurant.sortingValues.topRestaurants}<br/>
                     BestMatch: {props.restaurant.sortingValues.bestMatch}<br/>
                     Newest: {props.restaurant.sortingValues.newest}<br/>
                     RatingAverage: {props.restaurant.sortingValues.ratingAverage}<br/>
@@ -28,10 +29,10 @@ function RestaurantCard(props) {
                     MinCost: {props.restaurant.sortingValues.minCost}<br/>
                 </Card.Text>
                 <button className={`order-btn ${props.restaurant.status}`}>
-                    <img className="status-icon" src={props.restaurant.status == "closed" ? "/closed.png" : 
-                    props.restaurant.status == "open" ? "/scooter.png" : "/clock.png"}></img>
-                    {props.restaurant.status == "closed" ? "Closed" : 
-                    props.restaurant.status == "open" ? "Order Now" : "Order Ahead"}
+                    <img className="status-icon" src={props.restaurant.status === "closed" ? "/closed.png" : 
+                    props.restaurant.status === "open" ? "/scooter.png" : "/clock.png"} alt="status icon"></img>
+                    {props.restaurant.status === "closed" ? "Closed" : 
+                    props.restaurant.status === "open" ? "Order Now" : "Order Ahead"}
                 </button>
             </Card.Body>
         </Card> 

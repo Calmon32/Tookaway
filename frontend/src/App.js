@@ -10,11 +10,11 @@ class App extends Component {
     super()
     this.state = {
       restaurants: [],
-      favorites: {},
       search: "",
-      sortingBy: "0",
+      sortingBy: "-1",
       loading: true
     }
+    this.favorites = {}
     this.handleSortChange = this.handleSortChange.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
@@ -33,27 +33,25 @@ class App extends Component {
   }
 
   handleFavorite(restaurant) {
-    let currentValue = this.state.favorites[restaurant.name];
     let index = this.state.restaurants.indexOf(restaurant)
-    this.setState({
-      restaurants: update(this.state.restaurants, {[index]: {fav: {$set: !restaurant.fav}}})
-    })
-    this.state.favorites[restaurant.name] = !restaurant.fav
-    console.log(this.state.favorites)
-    localStorage.setItem('favorite-restaurants', JSON.stringify(this.state.favorites))
+    this.setState(prevState => ({
+      restaurants: update(prevState.restaurants, {[index]: {fav: {$set: !restaurant.fav}}})
+    }))
+    this.favorites[restaurant.name] = !restaurant.fav
+    console.log(this.favorites)
+    localStorage.setItem('favorite-restaurants', JSON.stringify(this.favorites))
   }
 
   componentDidMount() {
     let favorites = JSON.parse(localStorage.getItem('favorite-restaurants'))
-    this.setState({
-      favorites: favorites
-    })
+    this.favorites = favorites
     fetch("http://localhost:8080/api").then((res) => {
       return res.json()
     }).then((data) => {
       data.restaurants.map((restaurant) => {
         let value = favorites[restaurant.name]
-        restaurant.fav = value != undefined ? value : false;
+        restaurant.fav = value !== undefined ? value : false;
+        restaurant.sortingValues.topRestaurants = ((restaurant.sortingValues.distance * restaurant.sortingValues.popularity) + restaurant.sortingValues.ratingAverage);
       })
       this.setState({
         restaurants: data.restaurants,
@@ -65,7 +63,7 @@ class App extends Component {
   render() {
     return <div>
       <SearchBar changeSorting={this.handleSortChange} changeSearch={this.handleSearchChange}></SearchBar>
-      { this.state.search == "" ? 
+      { this.state.search === "" ? 
       <CardList loading={this.state.loading} favorite={this.handleFavorite} sorting={this.state.sortingBy} restaurants={this.state.restaurants}></CardList>
       :
       <p>Hello</p>
