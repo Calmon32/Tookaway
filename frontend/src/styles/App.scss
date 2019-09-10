@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  //background-color: rgb(243, 243, 243);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.NavBar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: rgb(255, 136, 0);
+  overflow: hidden;
+  a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .title {
+    color: white;
+    padding: 0;
+    margin: 0;
+    letter-spacing: -0.06em;
+    font-weight: 700;
+    text-shadow: 0px 5px 20px #00000025;
+  }
+
+  .search-box {
+    float: left;
+    display: block;
+    margin: 1rem auto;
+    font-size: 0.9em;
+    border-radius: 5px;
+    border: 0;
+  }
+
+  .form-inline {
+    text-align: right;
+  }
+
+  .navbar-toggler {
+    border: 0;
+  }
+
+  .navbar-dark,
+  .navbar-toggler-icon {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAQAAACROWYpAAAAAmJLR0QA/4ePzL8AAAAkSURBVEjHY2AYBUMJ/D/8n1RwmBLNh0aDfDSqRqNqNKpGNAAA/lk0BY7e7+4AAAAASUVORK5CYII=");
+  }
+
+  label {
+    padding: 1rem;
+    color: #f2f2f2;
+    text-align: right;
+  }
+
+  select,
+  input {
+    //padding: 0 2em;
+    font-size: 0.9em;
+    border-radius: 5px;
+    border: 1px solid rgb(209, 112, 0);
+  }
+}
+
+.grid-container {
+  margin: auto;
+  margin: 6rem 0;
+}
+
+.card-grid {
+  margin: auto;
+  display: grid;
+  align-items: center;
+  grid-gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  border: 0;
+  padding: 0.4rem;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.226);
+  background-color: white;
+  .card-body {
+    padding: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .card {
+    width: 100%;
+  }
+  .card-grid {
+    grid-template-columns: repeat(1, 95%);
+    grid-gap: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .card {
+    width: 100%;
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, 45%);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .card {
+    width: 100%;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 20rem);
+  }
+}
+
+.card-title {
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.fav-btn {
+    border: 0;
+    background-color: #00000000;
+    width: 2rem;
+    float: right;
+}
+
+.status-icon {
+  height: 1.2rem;
+  margin-right: 0.5rem;
+  vertical-align: text-bottom;
+}
+
+.order-btn {
+  width: 100%;
+  background-color: rgb(255, 136, 0);
+  border: 0px;
+  border-radius: 3px;
+  padding: 8px 14px;
+  color: white;
+}
+
+.closed {
+  background-color: rgb(190, 190, 190);
+}
+
+.order-btn:hover {
+  background-color: rgb(255, 155, 25);
+}
