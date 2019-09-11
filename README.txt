@@ -18,6 +18,6 @@ The frontend was made with React.js. It features all the requested requirements 
 
 The backend was made with Node.js. It serves the production-ready, static files built from the frontend and it also has an "/api" endpoint, which the frontend requests the restaurant list from. 
 
-All the sorting logic can be found on the frontend, on the component CardList.js, which is responsible for receiving the array of restaurants, sorting them according to the selected sort and then displaying each restaurant in a individual RestaurantCard.js.
+All the sorting logic can be found on the frontend, on the component CardList.js, which is responsible for receiving the array of restaurants, sorting them according to the selected sort and then displaying each restaurant in a individual RestaurantCard.js component.
 
-The skeleton of the backend was built using express-generator to avoid re-writing boilerplate code and for frontend I used create-react-app for the same reason.
+The skeleton of the backend was built using express-generator to avoid re-writing boilerplate code and for the frontend I used create-react-app for the same reason.
