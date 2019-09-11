@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import RestaurantCard from '../components/RestaurantCard'
 
-it('renders RestaurantCards without crashing', () => {
+it('renders without crashing', () => {
     const div = document.createElement('div')
     let restaurant = {
         "name": "Tanoshii Sushi",

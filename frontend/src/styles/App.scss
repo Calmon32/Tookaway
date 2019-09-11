@@ -63,6 +63,12 @@ button:focus {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAQAAACROWYpAAAAAmJLR0QA/4ePzL8AAAAkSURBVEjHY2AYBUMJ/D/8n1RwmBLNh0aDfDSqRqNqNKpGNAAA/lk0BY7e7+4AAAAASUVORK5CYII=");
   }
 
+  @media only screen and (max-width: 575px) {
+    .form-group {
+      width: 100%;
+    }
+  }
+
   label {
     padding: 1rem;
     color: #f2f2f2;
@@ -161,8 +167,4 @@ button:focus {
 
 .closed {
   background-color: rgb(190, 190, 190);
-}
-
-.order-btn:hover {
-  background-color: rgb(255, 155, 25);
 }

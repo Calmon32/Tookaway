@@ -3,20 +3,35 @@ import { shallow } from 'enzyme'
 import CardList, { sortRestaurants } from '../components/CardList'
 
 it('renders without crashing', () => {
-    let restaurants = [{
-        "name": "Tanoshii Sushi",
-        "status": "open",
-        "sortingValues": {
-            "bestMatch": 0.0,
-            "newest": 96.0,
-            "ratingAverage": 4.5,
-            "distance": 1190,
-            "popularity": 17.0,
-            "averageProductPrice": 1536,
-            "deliveryCosts": 200,
-            "minCost": 1000
+    let restaurants = [
+        {
+            "name": "Tanoshii Sushi",
+            "status": "open",
+            "sortingValues": {
+                "bestMatch": 0.0,
+                "newest": 96.0,
+                "ratingAverage": 4.5,
+                "distance": 1190,
+                "popularity": 17.0,
+                "averageProductPrice": 1536,
+                "deliveryCosts": 200,
+                "minCost": 1000
+            }
+        }, {
+            "name": "Feelfood",
+            "status": "order ahead",
+            "sortingValues": {
+                "bestMatch": 8.0,
+                "newest": 163.0,
+                "ratingAverage": 4.5,
+                "distance": 2732,
+                "popularity": 31.0,
+                "averageProductPrice": 902,
+                "deliveryCosts": 150,
+                "minCost": 1500
+            }
         }
-    }]
+    ]
     shallow(<CardList restaurants={restaurants} />);
 })
 
@@ -24,7 +39,7 @@ it('sorts restaurants properly', () => {
     let restaurants = []
     let sortedRestaurants = []
 
-    // Best match
+    // Sorting by best match
     restaurants = [
         {
             "name": "Tanoshii Sushi",
@@ -89,7 +104,7 @@ it('sorts restaurants properly', () => {
     ]
     expect(sortRestaurants(restaurants, "0", "")).toEqual(sortedRestaurants);
 
-    // Newest
+    // Sorting by newest
     let poprestaurants = [
         {
             "name": "Tanoshii Sushi",

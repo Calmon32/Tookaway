@@ -44,8 +44,9 @@ class App extends Component {
 
   componentDidMount() {
     let favorites = JSON.parse(localStorage.getItem('favorite-restaurants'))
+    if (!favorites) favorites = []
     this.favorites = favorites
-    fetch("http://localhost:8080/api").then((res) => {
+    fetch("http://localhost:3000/api").then((res) => {
       return res.json()
     }).then((data) => {
       data.restaurants.map((restaurant) => {

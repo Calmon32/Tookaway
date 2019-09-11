@@ -8,7 +8,7 @@ function SearchBar(props) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Form inline>
-                    <Form.Control type="text" placeholder="Search" className="mr-sm-2" onChange={props.changeSearch} />
+                    <Form.Control type="text" placeholder="Search" onChange={props.changeSearch} />
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label column className="text">Sort by:</Form.Label>
                         <Form.Control as="select" onChange={props.changeSorting}>
