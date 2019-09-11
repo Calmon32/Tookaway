@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Tookaway/static/css/main.c998a1ef.chunk.css",
-    "main.js": "/Tookaway/static/js/main.9c748b5d.chunk.js",
-    "main.js.map": "/Tookaway/static/js/main.9c748b5d.chunk.js.map",
+    "main.js": "/Tookaway/static/js/main.c61ab98d.chunk.js",
+    "main.js.map": "/Tookaway/static/js/main.c61ab98d.chunk.js.map",
     "runtime~main.js": "/Tookaway/static/js/runtime~main.3f97099b.js",
     "runtime~main.js.map": "/Tookaway/static/js/runtime~main.3f97099b.js.map",
     "static/js/2.aadc7fde.chunk.js": "/Tookaway/static/js/2.aadc7fde.chunk.js",
     "static/js/2.aadc7fde.chunk.js.map": "/Tookaway/static/js/2.aadc7fde.chunk.js.map",
     "index.html": "/Tookaway/index.html",
-    "precache-manifest.a26e8629fb0764d5562bb115f7308c65.js": "/Tookaway/precache-manifest.a26e8629fb0764d5562bb115f7308c65.js",
+    "precache-manifest.8c971cae7e15abb059c334db7ee909a7.js": "/Tookaway/precache-manifest.8c971cae7e15abb059c334db7ee909a7.js",
     "service-worker.js": "/Tookaway/service-worker.js",
     "static/css/main.c998a1ef.chunk.css.map": "/Tookaway/static/css/main.c998a1ef.chunk.css.map"
   }
