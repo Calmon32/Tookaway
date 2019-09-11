@@ -3,6 +3,7 @@ import update from 'react-addons-update';
 import SearchBar from './components/SearchBar'
 import CardList from './components/CardList'
 import './styles/App.scss';
+import fakeData from './restaurants.json';
 
 class App extends Component {
 
@@ -43,21 +44,28 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let favorites = JSON.parse(localStorage.getItem('favorite-restaurants'))
-    if (!favorites) favorites = []
-    this.favorites = favorites
     fetch("http://localhost:3000/api").then((res) => {
       return res.json()
     }).then((data) => {
-      data.restaurants.map((restaurant) => {
-        let value = favorites[restaurant.name]
-        restaurant.fav = value !== undefined ? value : false;
-        restaurant.sortingValues.topRestaurants = ((restaurant.sortingValues.distance * restaurant.sortingValues.popularity) + restaurant.sortingValues.ratingAverage);
-      })
-      this.setState({
-        restaurants: data.restaurants,
-        loading: false
-      })
+      this.loadData(data)
+    }).catch(err => {
+      console.log("Failed to fetch data. Using fake data.")
+      this.loadData(fakeData)
+    })
+  }
+
+  loadData(data) {
+    let favorites = JSON.parse(localStorage.getItem('favorite-restaurants'))
+    if (!favorites) favorites = []
+    this.favorites = favorites
+    data.restaurants.map((restaurant) => {
+      let value = favorites[restaurant.name]
+      restaurant.fav = value !== undefined ? value : false;
+      restaurant.sortingValues.topRestaurants = ((restaurant.sortingValues.distance * restaurant.sortingValues.popularity) + restaurant.sortingValues.ratingAverage);
+    })
+    this.setState({
+      restaurants: data.restaurants,
+      loading: false
     })
   }
 

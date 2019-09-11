@@ -1,11 +1,13 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "https://calmon32.github.io/Tookaway/",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "gh-pages": "^2.1.1",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-addons-update": "^15.6.2",
@@ -19,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
