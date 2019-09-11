@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9f220fa744471d69adf140d78f8a6a1d",
+    "revision": "2f0b92f26b108e012d612b35e5d91c90",
     "url": "/Tookaway/index.html"
   },
   {
-    "revision": "921db13bfeda5f5db53a",
+    "revision": "a676364908f6930f2f17",
     "url": "/Tookaway/static/css/main.c998a1ef.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Tookaway/static/js/2.aadc7fde.chunk.js"
   },
   {
-    "revision": "921db13bfeda5f5db53a",
-    "url": "/Tookaway/static/js/main.8679882f.chunk.js"
+    "revision": "a676364908f6930f2f17",
+    "url": "/Tookaway/static/js/main.da82e8cb.chunk.js"
   },
   {
     "revision": "2de672708dfe87f1e7c8",

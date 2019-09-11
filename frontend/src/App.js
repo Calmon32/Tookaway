@@ -11,11 +11,11 @@ class App extends Component {
     super()
     this.state = {
       restaurants: [],
+      favorites: {},
       search: "",
       sortingBy: "-1",
       loading: true
     }
-    this.favorites = {}
     this.handleSortChange = this.handleSortChange.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
@@ -35,12 +35,17 @@ class App extends Component {
 
   handleFavorite(restaurant) {
     let index = this.state.restaurants.indexOf(restaurant)
-    this.setState(prevState => ({
-      restaurants: update(prevState.restaurants, { [index]: { fav: { $set: !restaurant.fav } } })
-    }))
-    this.favorites[restaurant.name] = !restaurant.fav
-    console.log(this.favorites)
-    localStorage.setItem('favorite-restaurants', JSON.stringify(this.favorites))
+    this.setState(prevState => {
+      let favs = prevState.favorites
+      favs[restaurant.name] = !restaurant.fav
+      return {
+        restaurants: update(prevState.restaurants, { [index]: { fav: { $set: !restaurant.fav } } }),
+        favorites: favs
+      }
+    }, () => {
+      console.log(this.state.favorites)
+      localStorage.setItem('favorite-restaurants', JSON.stringify(this.state.favorites))
+    })
   }
 
   componentDidMount() {
@@ -56,8 +61,7 @@ class App extends Component {
 
   loadData(data) {
     let favorites = JSON.parse(localStorage.getItem('favorite-restaurants'))
-    if (!favorites) favorites = []
-    this.favorites = favorites
+    if (!favorites) favorites = {}
     data.restaurants.map((restaurant) => {
       let value = favorites[restaurant.name]
       restaurant.fav = value !== undefined ? value : false;
@@ -65,6 +69,7 @@ class App extends Component {
     })
     this.setState({
       restaurants: data.restaurants,
+      favorites: favorites,
       loading: false
     })
   }

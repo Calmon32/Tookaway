@@ -45,13 +45,13 @@ function RestaurantCard(props) {
     }
     return <div className="restaurant-card">
         <Card>
-            <Card.Img style={{ backgroundColor: "lightgrey" }} variant="top" src="/chef.png" />
+            <Card.Img style={{ backgroundColor: "lightgrey" }} variant="top" src="./chef.png" />
             <Card.ImgOverlay>
                 <button onClick={() => { props.favorite(props.restaurant) }} className="fav-btn">
                     {props.restaurant.fav ?
-                        <img className="fav-btn" src="/heart-full.png" alt="favorite"></img>
+                        <img className="fav-btn" src="./heart-full.png" alt="favorite"></img>
                         :
-                        <img className="fav-btn" src="/heart-empty.png" alt="not favorite"></img>
+                        <img className="fav-btn" src="./heart-empty.png" alt="not favorite"></img>
                     }
                 </button>
             </Card.ImgOverlay>
@@ -61,8 +61,8 @@ function RestaurantCard(props) {
                     {SortText}
                 </Card.Text>
                 <button className={`order-btn ${props.restaurant.status}`}>
-                    <img className="status-icon" src={props.restaurant.status === "closed" ? "/closed.png" :
-                        props.restaurant.status === "open" ? "/scooter.png" : "/clock.png"} alt="status icon"></img>
+                    <img className="status-icon" src={props.restaurant.status === "closed" ? "./closed.png" :
+                        props.restaurant.status === "open" ? "./scooter.png" : "./clock.png"} alt="status icon"></img>
                     {props.restaurant.status === "closed" ? "Closed" :
                         props.restaurant.status === "open" ? "Order Now" : "Order Ahead"}
                 </button>
